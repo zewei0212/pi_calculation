@@ -17,7 +17,7 @@ def point_in_circle(x, y, radius=1):
     True
 
     """
-    ...
+    return x**2 + y**2 <= radius**2
 
 def calculate_pi_timeit(points):
     """
@@ -28,7 +28,13 @@ def calculate_pi_timeit(points):
         """
         Calculates an approximated value of pi by the Monte Carlo method.
         """
-        ...
+        x = np.random.uniform(-1.0, 1.0, size=points)
+        y = np.random.uniform(-1.0, 1.0, size=points)
+        inside = x**2 + y**2 <= 1.0
+        n_inside = np.count_nonzero(inside)
+        pi_estimate = 4.0 * n_inside / points
+
+        return pi_estimate
     return calculate_pi
 
 
